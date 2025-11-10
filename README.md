@@ -8,33 +8,13 @@ The official [Model Context Protocol (MCP)](https://modelcontextprotocol.io) ser
 [![Python](https://img.shields.io/badge/python-3.14+-blue.svg)](https://python.org)
 [![MCP](https://img.shields.io/badge/MCP-1.21+-green.svg)](https://modelcontextprotocol.io)
 
-## Quick Installation
+## Installation
 
-Install HOPX MCP Server with one click in your favorite IDE:
+```bash
+uvx hopx-mcp
+```
 
-### Cursor
-
-[![Install in Cursor](https://img.shields.io/badge/Install%20in-Cursor-000?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgMkw0IDIwaDhsMTAtMThoLThaTTEyIDJsMTAgMThoLTh6IiBmaWxsPSIjZmZmIi8+PC9zdmc+)](cursor://anysphere.cursor-deeplink/mcp/install?name=HOPX%20Sandbox&config=eyJjb21tYW5kIjogInV2eCIsICJhcmdzIjogWyItLWZyb20iLCAiZ2l0K2h0dHBzOi8vZ2l0aHViLmNvbS9ob3B4LWFpL21jcCIsICJob3B4LW1jcCJdLCAiZW52IjogeyJIT1BYX0FQSV9LRVkiOiAiIn19)
-
-Click to install in Cursor. You'll need to add your HOPX API key after installation.
-
-### VS Code
-
-[![Install in VS Code](https://img.shields.io/badge/Install%20in-VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)](vscode:mcp/install?name=HOPX%20Sandbox&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22--from%22%2C%22git%2Bhttps%3A%2F%2Fgithub.com%2Fhopx-ai%2Fmcp%22%2C%22hopx-mcp%22%5D%7D)
-
-Click to install in VS Code with MCP support.
-
-### Visual Studio
-
-[![Install in Visual Studio](https://img.shields.io/badge/Install%20in-Visual%20Studio-5C2D91?style=for-the-badge&logo=visualstudio&logoColor=white)](vsweb+mcp:/install?%7B%22name%22%3A%22HOPX%20Sandbox%22%2C%22type%22%3A%22stdio%22%2C%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22--from%22%2C%22git%2Bhttps%3A%2F%2Fgithub.com%2Fhopx-ai%2Fmcp%22%2C%22hopx-mcp%22%5D%2C%22env%22%3A%7B%22HOPX_API_KEY%22%3A%22%22%7D%7D)
-
-Click to install in Visual Studio with MCP support.
-
-### Claude Desktop
-
-[![Install in Claude Desktop](https://img.shields.io/badge/Install%20in-Claude%20Desktop-111?style=for-the-badge&logo=anthropic&logoColor=white)](https://modelcontextprotocol.io/docs/tools/bundles)
-
-For Claude Desktop, download the `.mcpb` bundle (see [Publishing .mcpb Bundle](#publishing-mcpb-bundle) section) or configure manually below.
+Get your API key at [hopx.ai](https://hopx.ai) and configure your IDE below.
 
 ---
 
@@ -53,44 +33,15 @@ All executions happen in **secure, ephemeral cloud containers** that auto-destro
 
 ---
 
-## Installation Methods
-
-### Option 1: Direct from GitHub (Recommended)
-
-Use `uvx` to run directly from the GitHub repository:
-
-```bash
-uvx --from git+https://github.com/hopx-ai/mcp hopx-mcp
-```
-
-### Option 2: After Publishing to PyPI
-
-Once published to PyPI, you can install with:
-
-```bash
-uvx hopx-mcp
-```
-
-### Option 3: Local Development
-
-Clone and install for local development:
-
-```bash
-git clone https://github.com/hopx-ai/mcp.git
-cd mcp
-uv sync
-export HOPX_API_KEY="your-api-key-here"
-```
-
----
-
 ## Configuration
 
 ### Get Your API Key
 
-Sign up at [hopx.ai](https://hopx.ai) to get your API key.
+Sign up at [hopx.ai](https://hopx.ai) to get your free API key.
 
 ### Configure Your IDE
+
+After installing with `uvx hopx-mcp`, configure your IDE by adding the MCP server configuration:
 
 Choose your IDE below for detailed configuration instructions:
 
@@ -104,26 +55,6 @@ Add to `.cursor/mcp.json` in your project or workspace:
   "mcpServers": {
     "hopx-sandbox": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/hopx-ai/mcp",
-        "hopx-mcp"
-      ],
-      "env": {
-        "HOPX_API_KEY": "your-api-key-here"
-      }
-    }
-  }
-}
-```
-
-After publishing to PyPI, simplify to:
-
-```json
-{
-  "mcpServers": {
-    "hopx-sandbox": {
-      "command": "uvx",
       "args": ["hopx-mcp"],
       "env": {
         "HOPX_API_KEY": "your-api-key-here"
@@ -133,12 +64,7 @@ After publishing to PyPI, simplify to:
 }
 ```
 
-**Installation Button Config:**
-- The one-click install button uses this base64-encoded config:
-  ```json
-  {"command":"uvx","args":["--from","git+https://github.com/hopx-ai/mcp","hopx-mcp"],"env":{"HOPX_API_KEY":""}}
-  ```
-- Base64: `eyJjb21tYW5kIjogInV2eCIsICJhcmdzIjogWyItLWZyb20iLCAiZ2l0K2h0dHBzOi8vZ2l0aHViLmNvbS9ob3B4LWFpL21jcCIsICJob3B4LW1jcCJdLCAiZW52IjogeyJIT1BYX0FQSV9LRVkiOiAiIn19`
+Replace `your-api-key-here` with your actual API key from [hopx.ai](https://hopx.ai).
 
 </details>
 
@@ -152,26 +78,6 @@ Add to `.vscode/mcp.json` in your workspace:
   "mcpServers": {
     "hopx-sandbox": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/hopx-ai/mcp",
-        "hopx-mcp"
-      ],
-      "env": {
-        "HOPX_API_KEY": "your-api-key-here"
-      }
-    }
-  }
-}
-```
-
-After publishing to PyPI:
-
-```json
-{
-  "mcpServers": {
-    "hopx-sandbox": {
-      "command": "uvx",
       "args": ["hopx-mcp"],
       "env": {
         "HOPX_API_KEY": "your-api-key-here"
@@ -181,15 +87,7 @@ After publishing to PyPI:
 }
 ```
 
-**Installation Button Config:**
-- The one-click install button uses separate query parameters for name and config:
-  - Name: `HOPX Sandbox` (URL-encoded: `HOPX%20Sandbox`)
-  - Config JSON (without name field):
-    ```json
-    {"command":"uvx","args":["--from","git+https://github.com/hopx-ai/mcp","hopx-mcp"]}
-    ```
-  - Config URL-encoded: `%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22--from%22%2C%22git%2Bhttps%3A%2F%2Fgithub.com%2Fhopx-ai%2Fmcp%22%2C%22hopx-mcp%22%5D%7D`
-  - Full URL: `vscode:mcp/install?name=HOPX%20Sandbox&config=<encoded-config>`
+Replace `your-api-key-here` with your actual API key from [hopx.ai](https://hopx.ai).
 
 </details>
 
@@ -204,27 +102,6 @@ Add to `.mcp.json` in your project root:
     "hopx-sandbox": {
       "type": "stdio",
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/hopx-ai/mcp",
-        "hopx-mcp"
-      ],
-      "env": {
-        "HOPX_API_KEY": "your-api-key-here"
-      }
-    }
-  }
-}
-```
-
-After publishing to PyPI:
-
-```json
-{
-  "mcpServers": {
-    "hopx-sandbox": {
-      "type": "stdio",
-      "command": "uvx",
       "args": ["hopx-mcp"],
       "env": {
         "HOPX_API_KEY": "your-api-key-here"
@@ -234,12 +111,7 @@ After publishing to PyPI:
 }
 ```
 
-**Installation Button Config:**
-- The one-click install button uses this URL-encoded config with type and env:
-  ```json
-  {"name":"HOPX Sandbox","type":"stdio","command":"uvx","args":["--from","git+https://github.com/hopx-ai/mcp","hopx-mcp"],"env":{"HOPX_API_KEY":""}}
-  ```
-- URL Encoded: `%7B%22name%22%3A%22HOPX%20Sandbox%22%2C%22type%22%3A%22stdio%22%2C%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22--from%22%2C%22git%2Bhttps%3A%2F%2Fgithub.com%2Fhopx-ai%2Fmcp%22%2C%22hopx-mcp%22%5D%2C%22env%22%3A%7B%22HOPX_API_KEY%22%3A%22%22%7D%7D`
+Replace `your-api-key-here` with your actual API key from [hopx.ai](https://hopx.ai).
 
 </details>
 
@@ -253,26 +125,6 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json` on macO
   "mcpServers": {
     "hopx-sandbox": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/hopx-ai/mcp",
-        "hopx-mcp"
-      ],
-      "env": {
-        "HOPX_API_KEY": "your-api-key-here"
-      }
-    }
-  }
-}
-```
-
-After publishing to PyPI:
-
-```json
-{
-  "mcpServers": {
-    "hopx-sandbox": {
-      "command": "uvx",
       "args": ["hopx-mcp"],
       "env": {
         "HOPX_API_KEY": "your-api-key-here"
@@ -282,7 +134,7 @@ After publishing to PyPI:
 }
 ```
 
-Restart Claude Desktop after configuration.
+Replace `your-api-key-here` with your actual API key from [hopx.ai](https://hopx.ai), then restart Claude Desktop.
 
 </details>
 
@@ -296,11 +148,7 @@ Add to your VS Code settings or Cline configuration:
   "cline.mcpServers": {
     "hopx-sandbox": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/hopx-ai/mcp",
-        "hopx-mcp"
-      ],
+      "args": ["hopx-mcp"],
       "env": {
         "HOPX_API_KEY": "your-api-key-here"
       }
@@ -321,11 +169,7 @@ Add to `~/.continue/config.json`:
   "mcpServers": {
     "hopx-sandbox": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/hopx-ai/mcp",
-        "hopx-mcp"
-      ],
+      "args": ["hopx-mcp"],
       "env": {
         "HOPX_API_KEY": "your-api-key-here"
       }
@@ -346,11 +190,7 @@ Add to `.windsurf/mcp.json` in your project:
   "mcpServers": {
     "hopx-sandbox": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/hopx-ai/mcp",
-        "hopx-mcp"
-      ],
+      "args": ["hopx-mcp"],
       "env": {
         "HOPX_API_KEY": "your-api-key-here"
       }
@@ -372,11 +212,7 @@ Add to your Zed settings or MCP configuration:
     "servers": {
       "hopx-sandbox": {
         "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/hopx-ai/mcp",
-          "hopx-mcp"
-        ],
+        "args": ["hopx-mcp"],
         "env": {
           "HOPX_API_KEY": "your-api-key-here"
         }
@@ -398,11 +234,7 @@ Add to your Codex MCP configuration file:
   "mcpServers": {
     "hopx-sandbox": {
       "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/hopx-ai/mcp",
-        "hopx-mcp"
-      ],
+      "args": ["hopx-mcp"],
       "env": {
         "HOPX_API_KEY": "your-api-key-here"
       }
@@ -412,80 +244,6 @@ Add to your Codex MCP configuration file:
 ```
 
 </details>
-
----
-
-## Publishing .mcpb Bundle
-
-The `.mcpb` (MCP Bundle) format allows one-click installation in Claude Desktop and other MCP clients. To create and publish your bundle:
-
-### Creating the Bundle
-
-1. **Create the bundle structure:**
-   ```bash
-   mkdir hopx-mcp-bundle
-   cd hopx-mcp-bundle
-   ```
-
-2. **Create `manifest.json`:**
-   ```json
-   {
-     "name": "HOPX Sandbox",
-     "version": "0.1.0",
-     "description": "Execute code in isolated cloud containers",
-     "author": "HOPX",
-     "homepage": "https://hopx.ai",
-     "repository": "https://github.com/hopx-ai/mcp",
-     "license": "MIT",
-     "config": {
-       "command": "uvx",
-       "args": ["--from", "git+https://github.com/hopx-ai/mcp", "hopx-mcp"],
-       "env": {
-         "HOPX_API_KEY": ""
-       }
-     },
-     "requiredEnv": ["HOPX_API_KEY"]
-   }
-   ```
-
-3. **Create the bundle:**
-   ```bash
-   zip -r hopx-mcp.mcpb manifest.json
-   ```
-
-### Publishing the Bundle
-
-1. **Upload to GitHub Releases:**
-   - Create a new release on your GitHub repository
-   - Attach the `hopx-mcp.mcpb` file
-   - Users can download and double-click to install
-
-2. **Direct download link:**
-   ```markdown
-   [Download HOPX MCP Bundle](https://github.com/hopx-ai/mcp/releases/latest/download/hopx-mcp.mcpb)
-   ```
-
-3. **Installation instructions for users:**
-   - Download the `.mcpb` file
-   - Double-click the file (on supported platforms)
-   - Or: Open Claude Desktop → Settings → MCP Servers → Install from Bundle
-   - Enter your HOPX API key when prompted
-
-### After Publishing to PyPI
-
-Update the bundle to use the simpler PyPI installation:
-
-```json
-{
-  "config": {
-    "command": "uvx",
-    "args": ["hopx-mcp"],
-    "env": {
-      "HOPX_API_KEY": ""
-    }
-  }
-}
-```
 
 ---
 
@@ -748,24 +506,6 @@ HOPX_BEARER_TOKEN=alternative-auth  # if using bearer token
 
 ---
 
-## Testing
-
-We've included a comprehensive test suite:
-
-```bash
-export HOPX_API_KEY="your-api-key"
-cd bns-mcp
-uv run python test_execute_isolated.py
-```
-
-**Tests include:**
-- ✅ Python data analysis (pandas + numpy)
-- ✅ JavaScript array processing
-- ✅ Bash system commands
-- ✅ Environment variable injection
-
----
-
 ## Troubleshooting
 
 ### "401 Unauthorized" Error
@@ -814,15 +554,6 @@ execute_code_isolated(code='...', timeout=300)  # max 300s
 proc = execute_code_background(vm_url, code='...', timeout=1800)
 ```
 
-### Installation Button Not Working
-
-**Cause:** IDE doesn't support deep link protocol or MCP not installed.
-
-**Solution:**
-1. Ensure your IDE supports MCP (see [modelcontextprotocol.io](https://modelcontextprotocol.io))
-2. Install MCP support if needed
-3. Use manual configuration instead (see Configuration section)
-
 ---
 
 ## Limitations
@@ -864,32 +595,6 @@ For sensitive workloads, contact us about private cloud deployments.
 
 ---
 
-## Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-### Development Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/hopx-ai/mcp.git
-cd mcp
-
-# Install dependencies
-uv sync
-
-# Set up environment
-export HOPX_API_KEY="your-api-key"
-
-# Run tests
-uv run python test_execute_isolated.py
-
-# Run the server locally
-uv run python hopx_mcp/server.py
-```
-
----
-
 ## License
 
 This MCP server is provided under the MIT License. See [LICENSE](LICENSE) for details.
@@ -904,21 +609,6 @@ See the [HOPX Terms of Service](https://hopx.ai/terms) for API usage terms.
 - [Model Context Protocol](https://modelcontextprotocol.io) - Protocol for AI-tool integration
 - [HOPX Sandbox API](https://hopx.ai) - Cloud container platform
 - [uvx](https://docs.astral.sh/uv/) - Fast Python package installer and runner
-
----
-
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for version history and release notes.
-
----
-
-## Acknowledgments
-
-Special thanks to:
-- The Anthropic team for creating the Model Context Protocol
-- The FastMCP community for their excellent framework
-- All our contributors and early adopters
 
 ---
 
