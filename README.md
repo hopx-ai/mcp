@@ -20,13 +20,13 @@ Click to install in Cursor. You'll need to add your HOPX API key after installat
 
 ### VS Code
 
-[![Install in VS Code](https://img.shields.io/badge/Install%20in-VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)](vscode:mcp/install?%7B%22name%22%3A%20%22HOPX%20Sandbox%22%2C%20%22command%22%3A%20%22uvx%22%2C%20%22args%22%3A%20%5B%22--from%22%2C%20%22git%2Bhttps%3A//github.com/hopx-ai/mcp%22%2C%20%22hopx-mcp%22%5D%7D)
+[![Install in VS Code](https://img.shields.io/badge/Install%20in-VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)](vscode:mcp/install?name=HOPX%20Sandbox&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22--from%22%2C%22git%2Bhttps%3A%2F%2Fgithub.com%2Fhopx-ai%2Fmcp%22%2C%22hopx-mcp%22%5D%7D)
 
 Click to install in VS Code with MCP support.
 
 ### Visual Studio
 
-[![Install in Visual Studio](https://img.shields.io/badge/Install%20in-Visual%20Studio-5C2D91?style=for-the-badge&logo=visualstudio&logoColor=white)](vsweb+mcp:/install?%7B%22name%22%3A%20%22HOPX%20Sandbox%22%2C%20%22type%22%3A%20%22stdio%22%2C%20%22command%22%3A%20%22uvx%22%2C%20%22args%22%3A%20%5B%22--from%22%2C%20%22git%2Bhttps%3A//github.com/hopx-ai/mcp%22%2C%20%22hopx-mcp%22%5D%7D)
+[![Install in Visual Studio](https://img.shields.io/badge/Install%20in-Visual%20Studio-5C2D91?style=for-the-badge&logo=visualstudio&logoColor=white)](vsweb+mcp:/install?%7B%22name%22%3A%22HOPX%20Sandbox%22%2C%22type%22%3A%22stdio%22%2C%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22--from%22%2C%22git%2Bhttps%3A%2F%2Fgithub.com%2Fhopx-ai%2Fmcp%22%2C%22hopx-mcp%22%5D%2C%22env%22%3A%7B%22HOPX_API_KEY%22%3A%22%22%7D%7D)
 
 Click to install in Visual Studio with MCP support.
 
@@ -88,7 +88,7 @@ export HOPX_API_KEY="your-api-key-here"
 
 ### Get Your API Key
 
-Sign up at [hopx.dev](https://hopx.dev) to get your API key.
+Sign up at [hopx.ai](https://hopx.ai) to get your API key.
 
 ### Configure Your IDE
 
@@ -182,11 +182,14 @@ After publishing to PyPI:
 ```
 
 **Installation Button Config:**
-- The one-click install button uses this URL-encoded config:
-  ```json
-  {"name":"HOPX Sandbox","command":"uvx","args":["--from","git+https://github.com/hopx-ai/mcp","hopx-mcp"]}
-  ```
-- URL Encoded: `%7B%22name%22%3A%20%22HOPX%20Sandbox%22%2C%20%22command%22%3A%20%22uvx%22%2C%20%22args%22%3A%20%5B%22--from%22%2C%20%22git%2Bhttps%3A//github.com/hopx-ai/mcp%22%2C%20%22hopx-mcp%22%5D%7D`
+- The one-click install button uses separate query parameters for name and config:
+  - Name: `HOPX Sandbox` (URL-encoded: `HOPX%20Sandbox`)
+  - Config JSON (without name field):
+    ```json
+    {"command":"uvx","args":["--from","git+https://github.com/hopx-ai/mcp","hopx-mcp"]}
+    ```
+  - Config URL-encoded: `%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22--from%22%2C%22git%2Bhttps%3A%2F%2Fgithub.com%2Fhopx-ai%2Fmcp%22%2C%22hopx-mcp%22%5D%7D`
+  - Full URL: `vscode:mcp/install?name=HOPX%20Sandbox&config=<encoded-config>`
 
 </details>
 
@@ -232,11 +235,11 @@ After publishing to PyPI:
 ```
 
 **Installation Button Config:**
-- The one-click install button uses this URL-encoded config with type:
+- The one-click install button uses this URL-encoded config with type and env:
   ```json
-  {"name":"HOPX Sandbox","type":"stdio","command":"uvx","args":["--from","git+https://github.com/hopx-ai/mcp","hopx-mcp"]}
+  {"name":"HOPX Sandbox","type":"stdio","command":"uvx","args":["--from","git+https://github.com/hopx-ai/mcp","hopx-mcp"],"env":{"HOPX_API_KEY":""}}
   ```
-- URL Encoded: `%7B%22name%22%3A%20%22HOPX%20Sandbox%22%2C%20%22type%22%3A%20%22stdio%22%2C%20%22command%22%3A%20%22uvx%22%2C%20%22args%22%3A%20%5B%22--from%22%2C%20%22git%2Bhttps%3A//github.com/hopx-ai/mcp%22%2C%20%22hopx-mcp%22%5D%7D`
+- URL Encoded: `%7B%22name%22%3A%22HOPX%20Sandbox%22%2C%22type%22%3A%22stdio%22%2C%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22--from%22%2C%22git%2Bhttps%3A%2F%2Fgithub.com%2Fhopx-ai%2Fmcp%22%2C%22hopx-mcp%22%5D%2C%22env%22%3A%7B%22HOPX_API_KEY%22%3A%22%22%7D%7D`
 
 </details>
 
@@ -431,7 +434,7 @@ The `.mcpb` (MCP Bundle) format allows one-click installation in Claude Desktop 
      "version": "0.1.0",
      "description": "Execute code in isolated cloud containers",
      "author": "HOPX",
-     "homepage": "https://hopx.dev",
+     "homepage": "https://hopx.ai",
      "repository": "https://github.com/hopx-ai/mcp",
      "license": "MIT",
      "config": {
@@ -734,7 +737,7 @@ The MCP server exposes 30+ tools for complete control:
 HOPX_API_KEY=your-api-key
 ```
 
-Get your API key at [hopx.dev](https://hopx.dev)
+Get your API key at [hopx.ai](https://hopx.ai)
 
 ### Optional
 
@@ -853,10 +856,10 @@ For sensitive workloads, contact us about private cloud deployments.
 
 ## Support
 
-- **Documentation:** [docs.hopx.dev](https://docs.hopx.dev)
+- **Documentation:** [docs.hopx.ai](https://docs.hopx.ai)
 - **API Reference:** [api.hopx.dev](https://api.hopx.dev)
 - **Issues:** [GitHub Issues](https://github.com/hopx-ai/mcp/issues)
-- **Email:** support@hopx.dev
+- **Email:** support@hopx.ai
 - **Discord:** [Join our community](https://discord.gg/hopx)
 
 ---
@@ -891,7 +894,7 @@ uv run python hopx_mcp/server.py
 
 This MCP server is provided under the MIT License. See [LICENSE](LICENSE) for details.
 
-See the [HOPX Terms of Service](https://hopx.dev/terms) for API usage terms.
+See the [HOPX Terms of Service](https://hopx.ai/terms) for API usage terms.
 
 ---
 
@@ -899,7 +902,7 @@ See the [HOPX Terms of Service](https://hopx.dev/terms) for API usage terms.
 
 - [FastMCP](https://github.com/jlowin/fastmcp) - Python framework for MCP servers
 - [Model Context Protocol](https://modelcontextprotocol.io) - Protocol for AI-tool integration
-- [HOPX Sandbox API](https://hopx.dev) - Cloud container platform
+- [HOPX Sandbox API](https://hopx.ai) - Cloud container platform
 - [uvx](https://docs.astral.sh/uv/) - Fast Python package installer and runner
 
 ---
@@ -919,6 +922,6 @@ Special thanks to:
 
 ---
 
-Made with ❤️ by [HOPX](https://hopx.dev)
+Made with ❤️ by [HOPX](https://hopx.ai)
 
-[Website](https://hopx.dev) | [Documentation](https://docs.hopx.dev) | [API Reference](https://api.hopx.dev) | [GitHub](https://github.com/hopx-ai/mcp)
+[Website](https://hopx.ai) | [Documentation](https://docs.hopx.ai) | [API Reference](https://api.hopx.dev) | [GitHub](https://github.com/hopx-ai/mcp)
