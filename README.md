@@ -2,7 +2,7 @@
 
 **Give your AI assistant superpowers with secure, isolated code execution.**
 
-The official [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server for [HOPX](https://hopx.ai). Enable Claude and other AI assistants to execute code in blazing-fast (~0.1ms startup), isolated cloud containers.
+The official [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server for [HOPX](https://hopx.ai). Enable Claude and other AI assistants to execute code in blazing-fast (0.1s startup), isolated cloud containers.
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.14+-blue.svg)](https://python.org)
@@ -327,7 +327,7 @@ Disk:
 ## Features
 
 ### 🚀 Blazing Fast
-- Sandbox creation in ~0.1ms
+- Sandbox creation in ~0.1s
 - Pre-warmed containers ready to execute
 - Global edge network for low latency
 
