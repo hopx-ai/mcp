@@ -4,6 +4,8 @@
 
 The official [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server for [HOPX](https://hopx.ai). Enable Claude and other AI assistants to execute code in blazing-fast (0.1s startup), isolated cloud containers.
 
+**mcp-name: io.github.hopx-ai/hopx-mcp**
+
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.14+-blue.svg)](https://python.org)
 [![MCP](https://img.shields.io/badge/MCP-1.21+-green.svg)](https://modelcontextprotocol.io)

@@ -26,6 +26,19 @@ jobs:
         with:
           python-version: "3.14"
 
+      - name: Update version in pyproject.toml
+        run: |
+          # Extract version from release tag (remove 'v' prefix)
+          VERSION="${{ github.event.release.tag_name }}"
+          VERSION="${VERSION#v}"
+
+          # Update version in pyproject.toml
+          sed -i.bak "s/^version = .*/version = \"$VERSION\"/" pyproject.toml
+          rm pyproject.toml.bak
+
+          echo "Updated pyproject.toml version to: $VERSION"
+          grep "^version = " pyproject.toml
+
       - name: Build release distributions
         run: |
           # Build steps
@@ -69,3 +82,43 @@ jobs:
           user: ${{ secrets.PYPI_USERNAME }}
           password: ${{ secrets.PYPI_TOKEN }}
           packages-dir: dist/
+
+  mcp-publish:
+    runs-on: ubuntu-latest
+    needs:
+      - pypi-publish
+    permissions:
+      # IMPORTANT: this permission is mandatory for GitHub OIDC authentication
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Update version in server.json
+        run: |
+          # Extract version from release tag (remove 'v' prefix)
+          VERSION="${{ github.event.release.tag_name }}"
+          VERSION="${VERSION#v}"
+
+          # Update version in server.json using jq
+          jq --arg version "$VERSION" '.version = $version' server.json > server.json.tmp
+          mv server.json.tmp server.json
+
+          echo "Updated server.json version to: $VERSION"
+          cat server.json | jq '.version'
+
+      - name: Install MCP Publisher
+        run: |
+          # Install via Homebrew
+          brew install modelcontextprotocol/tap/mcp-publisher
+
+      - name: Authenticate with GitHub OIDC
+        run: |
+          # GitHub Actions OIDC authentication (no secrets needed)
+          mcp-publisher login github --oidc
+
+      - name: Publish to MCP Registry
+        run: |
+          mcp-publisher publish
