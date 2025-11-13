@@ -111,8 +111,10 @@ jobs:
 
       - name: Install MCP Publisher
         run: |
-          # Install via Homebrew
-          brew install modelcontextprotocol/tap/mcp-publisher
+          # Download and install pre-built binary for Linux
+          curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/').tar.gz" | tar xz
+          sudo mv mcp-publisher /usr/local/bin/
+          mcp-publisher --version
 
       - name: Authenticate with GitHub OIDC
         run: |
