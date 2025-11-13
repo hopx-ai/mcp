@@ -119,7 +119,7 @@ jobs:
       - name: Authenticate with GitHub OIDC
         run: |
           # GitHub Actions OIDC authentication (no secrets needed)
-          mcp-publisher login github --oidc
+          mcp-publisher login github-oidc
 
       - name: Publish to MCP Registry
         run: |
