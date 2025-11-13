@@ -1,11 +1,11 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
   "name": "io.github.hopx-ai/hopx-mcp",
   "version": "0.1.2",
   "description": "Execute code in isolated cloud containers. Supports Python, JavaScript, Bash, and Go.",
   "homepage": "https://hopx.ai",
-  "source_url": "https://github.com/hopx-ai/mcp",
-  "readme_url": "https://github.com/hopx-ai/mcp/blob/main/README.md",
+  "sourceUrl": "https://github.com/hopx-ai/mcp",
+  "readmeUrl": "https://github.com/hopx-ai/mcp/blob/main/README.md",
   "license": "MIT",
   "deployment": {
     "type": "package",
