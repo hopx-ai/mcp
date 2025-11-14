@@ -1,0 +1,79 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
+  "name": "io.github.hopx-ai/hopx-mcp",
+  "version": "0.1.2",
+  "description": "Execute code in isolated cloud containers. Supports Python, JavaScript, Bash, and Go.",
+  "homepage": "https://hopx.ai",
+  "sourceUrl": "https://github.com/hopx-ai/mcp",
+  "readmeUrl": "https://github.com/hopx-ai/mcp/blob/main/README.md",
+  "license": "MIT",
+  "deployment": {
+    "type": "package",
+    "package": {
+      "type": "pypi",
+      "name": "hopx-mcp",
+      "pypi_name": "hopx-mcp"
+    }
+  },
+  "installation": {
+    "type": "stdio",
+    "command": "uvx",
+    "args": ["hopx-mcp"],
+    "env": {
+      "HOPX_API_KEY": {
+        "description": "API key from hopx.ai",
+        "required": true
+      }
+    }
+  },
+  "categories": [
+    "code-execution",
+    "development-tools",
+    "data-analysis"
+  ],
+  "tags": [
+    "code-execution",
+    "sandbox",
+    "isolated-environments",
+    "python",
+    "javascript",
+    "bash",
+    "go",
+    "data-science",
+    "containers",
+    "firecracker"
+  ],
+  "capabilities": {
+    "tools": [
+      {
+        "name": "execute_code_isolated",
+        "description": "Execute code in an isolated sandbox with automatic cleanup"
+      },
+      {
+        "name": "create_sandbox",
+        "description": "Create a persistent sandbox for multi-step workflows"
+      },
+      {
+        "name": "execute_code",
+        "description": "Execute code in an existing sandbox"
+      },
+      {
+        "name": "file_read",
+        "description": "Read files from sandbox filesystem"
+      },
+      {
+        "name": "file_write",
+        "description": "Write files to sandbox filesystem"
+      }
+    ]
+  },
+  "author": {
+    "name": "HOPX",
+    "url": "https://hopx.ai"
+  },
+  "support": {
+    "documentation": "https://docs.hopx.ai",
+    "issues": "https://github.com/hopx-ai/mcp/issues",
+    "email": "support@hopx.ai"
+  }
+}
