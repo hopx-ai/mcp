@@ -11,3 +11,17 @@ wheels/
 
 # Environment variable files
 .env
+
+# Test files
+test_live.py
+*.log
+
+# agents
+CLAUDE.md
+.claude/
+
+# avoid accidental garbage collection
+!README.md
+*.md
+test*.py
+check*.py

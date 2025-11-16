@@ -1,11 +1,11 @@
 [project]
 name = "hopx-mcp"
-version = "0.1.2"
+version = "0.2.0"
 description = "MCP tool for executing code in isolated environments using HopX"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "httpx>=0.28.1",
+    "hopx-ai>=0.3.0",
     "mcp[cli]>=1.21.0",
     "python-dotenv>=1.2.1",
 ]
