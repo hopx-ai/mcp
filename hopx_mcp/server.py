@@ -664,7 +664,6 @@ def _execute_background(
         language=language,
         timeout=timeout,
         env=env,
-        working_dir=working_dir,
         name=name,
     )
 
